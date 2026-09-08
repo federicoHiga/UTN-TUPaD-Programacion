@@ -1,4 +1,5 @@
 #1
+print("ejercicio 1")
 def calcular_factura_final(monto_base: float, impuesto: float = 21.0, descuento: float = 0.0, envio_prioritario: float | None = None) -> float:
     # 1. Calculamos el monto aplicando el descuento
     subtotal = monto_base * (1 - descuento / 100)
@@ -19,6 +20,7 @@ print(calcular_factura_final(1000.0, descuento=10.0))
 print(calcular_factura_final(1000.0, impuesto=10.0, descuento=5.0, envio_prioritario=150.0))
 ################################################################################################
 #2
+print("ejercicio 2")
 class ValidadorFinanciero:
     #Utilidades financieras que no necesitan crear objetos.
 
@@ -81,6 +83,7 @@ procesador.procesar_transaccion(
 )
 ################################################################################################
 #4
+print("ejercicio 4")
 #modulo: str: Es un parámetro posicional obligatorio. Se utiliza .upper() para garantizar que siempre se formatee en mayúsculas.
 #*mensajes: str (*args): Recibe una cantidad variable de argumentos no nombrados (posicionales) en forma de tupla. 
 # Usamos enumerate(mensajes, start=1) para numerar cada línea secuencialmente a partir de [1].
