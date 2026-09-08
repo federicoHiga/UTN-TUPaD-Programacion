@@ -129,3 +129,58 @@ if __name__ == "__main__":
     )
     
     print(log)
+# EJERCICIO 5: SISTEMA INTEGRADOR
+print("ejercicio 5")
+# Clase para realizar los cálculos
+class CalculadoraFitness:
+    # Calcula el IMC
+    @staticmethod
+    def calcular_imc(peso_kg, altura_m):
+        imc = peso_kg / (altura_m * altura_m)
+        return round(imc, 2)
+    # Clasifica el IMC
+    @staticmethod
+    def clasificar_nivel(imc):
+        if imc < 18.5:
+            return "Bajo peso"
+        elif imc < 25:
+            return "Normal"
+        else:
+            return "Sobrepeso"
+# Clase que representa al atleta
+class Atleta:
+    # Guarda los datos del atleta
+    def __init__(self, nombre, peso, altura):
+        self.nombre = nombre
+        self.peso = peso
+        self.altura = altura
+    # Genera el reporte
+    def obtener_reporte(self, incluir_recomendacion=False, **metricas_extra):
+        # Calcula el IMC y su nivel
+        imc = CalculadoraFitness.calcular_imc(self.peso, self.altura)
+        nivel = CalculadoraFitness.clasificar_nivel(imc)
+        # Muestra los datos principales
+        reporte = "Nombre: " + self.nombre
+        reporte += "\nPeso: " + str(self.peso) + " kg"
+        reporte += "\nAltura: " + str(self.altura) + " m"
+        reporte += "\nIMC: " + str(imc)
+        reporte += "\nNivel: " + nivel
+        # Agrega las métricas adicionales
+        for nombre, valor in metricas_extra.items():
+            reporte += "\n" + nombre + ": " + str(valor)
+        # Agrega una recomendación
+        if incluir_recomendacion:
+            if nivel == "Bajo peso":
+                reporte += "\nRecomendación: Aumentar la alimentación."
+            elif nivel == "Normal":
+                reporte += "\nRecomendación: Mantener hábitos saludables."
+            else:
+                reporte += "\nRecomendación: Realizar actividad física."
+        return reporte
+# Prueba del programa
+atleta = Atleta("Sofia", 60, 1.65)
+print(atleta.obtener_reporte(
+    incluir_recomendacion=True,
+    edad=21,
+    deporte="Ballet"
+))
