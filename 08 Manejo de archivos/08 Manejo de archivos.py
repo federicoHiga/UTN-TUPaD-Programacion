@@ -1,5 +1,5 @@
 #1
-with open("productos.txt","w") as archivo:
+with open("productos.txt","a") as archivo:
 
     archivo.write("Lapicera,$120.5,5\n")
     archivo.write("Cuaderno,$1000,10\n")
